@@ -13,6 +13,8 @@ Importance ratings: High, Medium, Low
 
 */
 
+// starter data for demo purposes
+
 const demoToDosArr = [
   {
     title: "Start Portfolio Project",
@@ -50,6 +52,8 @@ const demoToDosArr = [
 
 const demoLabelsArr = ["exercise", "home", "story", "programming"];
 
+// initial state
+
 let initialState = {
   toDos: demoToDosArr,
   tags: {
@@ -61,14 +65,18 @@ let initialState = {
 };
 
 function App() {
+
+  // runs on first render only
   useEffect(function () {
+    // checking whether data exists in local storage for labels array; if exists, logic is meant to update initial state, but isn't; logic is returning local storage data but state is notbeing affected
     const labels = pullFromLocalStorage("labels");
     if (labels)
       initialState = {
         ...initialState,
         tags: { ...initialState.tags, labels: labels },
       };
-
+    
+ // checking whether data exists in local storage for toDos object; if exists, logic is meant to update initial state, but isn't; logic is returning local storage data but state is notbeing affected
     const toDos = pullFromLocalStorage("toDos");
     if (toDos)
       initialState = {
